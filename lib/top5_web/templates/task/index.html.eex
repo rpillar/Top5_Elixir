@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col s8 offset-s3">
+        <div>
+            <p style="font-size:22px;">No active tasks have been defined.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="sidebar">
+    <div style="margin:90px 0 10px 0;">
+        <h2 class="menu-title"><span style="border-bottom: 1px solid #3bc492;">Menu</span></h2>
+        <%= link to: Routes.task_path(@conn, :logout) do %>
+            <i class="material-icons" style="font-size:4rem;margin-top:30px;margin-left:20px;color:#000;">power_settings_new</i>
+        <% end %>
+        <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">comment</i></a>
+        <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">storage</i></a>
+        <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">done</i></a>
+    </div>
+</div>

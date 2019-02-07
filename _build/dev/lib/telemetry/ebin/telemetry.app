@@ -5,5 +5,4 @@
                         'Elixir.Telemetry.HandlerTable']},
               {registered,[]},
               {vsn,"0.2.0"},
-              {extra_applications,[logger]},
               {mod,{'Elixir.Telemetry.Application',[]}}]}.

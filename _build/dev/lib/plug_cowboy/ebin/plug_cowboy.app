@@ -7,5 +7,4 @@
                         'Elixir.Plug.Cowboy.Translator']},
               {registered,[]},
               {vsn,"2.0.1"},
-              {extra_applications,[logger]},
               {mod,{'Elixir.Plug.Cowboy',[]}}]}.

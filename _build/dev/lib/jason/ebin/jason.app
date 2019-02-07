@@ -20,5 +20,4 @@
                         'Elixir.Jason.Encoder.Time','Elixir.Jason.Formatter',
                         'Elixir.Jason.Fragment','Elixir.Jason.Helpers']},
               {registered,[]},
-              {vsn,"1.1.2"},
-              {extra_applications,[]}]}.
+              {vsn,"1.1.2"}]}.

@@ -38,6 +38,18 @@ defmodule Top5.Accounts do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Get a user by their username
+
+  Raises `Ecto.NoResultsError` if the User does not exist.
+  """
+  def get_user_by_username(username) do
+    case Repo.get_by(User, username: username) do
+      nil -> nil
+      user -> user
+    end
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples

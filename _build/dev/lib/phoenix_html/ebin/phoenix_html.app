@@ -1,5 +1,6 @@
 {application,phoenix_html,
-             [{description,"Phoenix view functions for working with HTML templates"},
+             [{applications,[kernel,stdlib,elixir,logger,plug]},
+              {description,"Phoenix view functions for working with HTML templates"},
               {modules,['Elixir.Phoenix.HTML','Elixir.Phoenix.HTML.Engine',
                         'Elixir.Phoenix.HTML.Form',
                         'Elixir.Phoenix.HTML.FormData',
@@ -19,5 +20,4 @@
                         'Elixir.Phoenix.HTML.Safe.Tuple',
                         'Elixir.Phoenix.HTML.Tag']},
               {registered,[]},
-              {vsn,"2.13.0"},
-              {applications,[kernel,stdlib,elixir,logger,plug]}]}.
+              {vsn,"2.13.0"}]}.

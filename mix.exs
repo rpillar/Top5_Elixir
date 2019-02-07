@@ -42,8 +42,8 @@ defmodule Top5.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:comeonin, "~> 4.1"},
-      {:argon2_elixir, "~> 1.3"},
+      {:guardian, "~> 1.2"},
+      {:pbkdf2_elixir, "~> 0.12.3"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

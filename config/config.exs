@@ -10,6 +10,10 @@ use Mix.Config
 config :top5,
   ecto_repos: [Top5.Repo]
 
+config :top5, Top5.Accounts.Guardian,
+  issuer: "top5",
+  secret_key: "M2nlkRbPZ3WJ+TBCDv8A/QDZZsWP1XAh9sy5/pff2L37bAcoCjQiV1/kPJLfZoSN"
+
 # Configures the endpoint
 config :top5, Top5Web.Endpoint,
   url: [host: "localhost"],

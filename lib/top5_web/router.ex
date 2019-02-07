@@ -16,9 +16,12 @@ defmodule Top5Web.Router do
   scope "/top5", Top5Web do
     pipe_through :browser
 
-    get  "/",         HomeController,     :index
-    #post "/login",    HomeController,     :login
-    get  "/register", RegisterController, :index
+    get     "/",              HomeController,     :index
+    post    "/",              HomeController,     :sign_in
+    get     "/register",      RegisterController, :index
+    post    "/register",      RegisterController, :create
+    get     "/tasks",         TaskController,     :index
+    get     "/tasks/logout",  TaskController,     :logout
   end
 
 end
