@@ -3,12 +3,13 @@
     <div class="col s8 offset-s3">
         <div class="login-form">
             <div class="col s10 message">
-                <%= if get_flash(@conn, :info) do %>
-                    <p class="info_message"><%= get_flash(@conn, :info) %></p>
-                <% end %>  
                 <%= if get_flash(@conn, :error) do %>
                     <p class="error_message"><%= get_flash(@conn, :error) %></p>
-                <% end %>
+                <% else %>
+                    <%= if get_flash(@conn, :info) do %>
+                            <p class="info_message"><%= get_flash(@conn, :info) %></p>
+                    <% end %>
+                <% end %>  
             </div>
             <div class="col s12"style="margin-top:20px;">
                 <%= form_for @conn, Routes.home_path(@conn, :sign_in), [as: :session], fn f -> %>

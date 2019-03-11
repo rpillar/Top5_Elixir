@@ -1,10 +1,46 @@
+<style>
+#add-task-modal-close {
+    text-decoration:none;
+    cursor:pointer;
+    padding:15px;
+    color: #ef9a9a;
+}
+#add-task-modal-close:hover {
+    color: red;
+}
+</style>
+
 <div class="row">
-    <div class="col s8 offset-s3">
+    <div class="col s8 offset-s2">
         <div>
-            <p style="font-size:22px;">No active tasks have been defined.</p>
+            <h3><span style="border-bottom: 4px solid lightblue;">Task List</span></h3>
+        </div>
+        <div>
+            <%= if Enum.count(@tasks) > 0 do %>
+                <%= for task <- @tasks do %>
+                    <p><%= task.task_description %></p>
+                    <!--<p style="font-size:22px;">No active tasks have been defined.</p>-->
+                <% end %>
+            <% else %>
+                <p style="font-size:22px;">No active tasks have been defined.</p>
+            <% end %>
         </div>
     </div>
+</div>
 
+<div id="add-task-modal" class="modal bottom-sheet" style='z-index:1003;display:none;opacity:0;bottom:-100%;min-height:80%;max-height:90%;border-top:8px solid #000;opacity:0.7;'>
+    <div class="modal-content">
+        <div style="position:absolute; top:15px;right:60px;">
+            <a id="add-task-modal-close" href="#">
+                <i class="material-icons" style="font-size:5rem;">close</i>
+            </a>
+        </div>
+        <div style="border-bottom:2px solid lightblue;">
+            <h2 style="margin-left:40px;">Add Task</h2>
+        </div>
+        <form>
+        </form>
+    </div>
 </div>
 
 <div class="sidebar">
@@ -13,8 +49,19 @@
         <%= link to: Routes.task_path(@conn, :logout) do %>
             <i class="material-icons" style="font-size:4rem;margin-top:30px;margin-left:20px;color:#000;">power_settings_new</i>
         <% end %>
-        <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">comment</i></a>
+        <a href="#add-task-modal" class="modal-trigger"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">comment</i></a>
         <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">storage</i></a>
         <a href="#"><i class="material-icons" style="font-size:4rem;margin-top:10px;margin-left:20px;color:#000;">done</i></a>
     </div>
 </div>
+
+<script>
+    $( document ).ready(function() {
+        $('.modal').modal({outDuration:300,opacity:.4})
+    });
+
+    $('#add-task-modal-close').on('click', function(e) {
+        e.preventDefault();
+        $('#add-task-modal').modal('close');
+    });
+</script>

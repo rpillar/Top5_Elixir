@@ -2,13 +2,15 @@ defmodule Top5Web.TaskController do
     use Top5Web, :controller
 
     alias Top5.Accounts
+    alias Top5.Tasks
     alias Top5Web.Router.Helpers
 
     plug :check_auth
   
     def index(conn, _params) do
+      tasks = Tasks.list_tasks
       conn
-      |> render("index.html")
+      |> render("index.html", tasks: tasks)
     end
 
     def logout(conn, _params) do
@@ -24,6 +26,8 @@ defmodule Top5Web.TaskController do
             |> assign(:current_user, current_user)
         else
             conn
+            |> clear_flash
+            |> put_flash( :error, "Error : You need to login to access the service." )
             |> redirect(to: Helpers.home_path(conn, :index))
         end
     end

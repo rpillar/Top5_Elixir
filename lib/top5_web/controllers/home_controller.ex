@@ -11,34 +11,23 @@ defmodule Top5Web.HomeController do
   end
 
   def sign_in(conn, %{"session" => auth_params}) do
-
-    case validate_signin(auth_params) do
-      false ->
-        conn
-        |> clear_flash
-        |> put_flash( :error, "Error - Username or Password is missing / incorrect" )
-        |> render("index.html")
-      true ->
-        IO.puts "Valid signin data"
-    end
-    
     username = auth_params["username"]
     password = auth_params["password"]
 
-    case authenticate_user(username, password) do
-      {:error, :invalid_data} ->
-        conn
-        |> clear_flash
-        |> put_flash( :error, "Error - Username or Password is missing / incorrect" )
-        |> render("index.html")
-      {:ok, user} ->
-        conn
+    with {:ok, _ } <- validate_signin(auth_params),    
+         {:ok, user} <- authenticate_user(username, password)
+    do
+      conn
         |> clear_flash
         |> put_session(:current_user_id, user.id)
         |> put_flash( :info, "Signedin successfully" )
         |> redirect(to: Helpers.task_path(conn, :index))
+    else
+      _ -> conn
+        |> clear_flash
+        |> put_flash( :error, "Error - Username or Password is missing / incorrect" )
+        |> render("index.html")
     end
-
   end
 
   defp authenticate_user(username, password) do
@@ -47,8 +36,10 @@ defmodule Top5Web.HomeController do
         {:error, :invalid_data}
       user ->
         if Pbkdf2.verify_pass(password, user.password) do
+          IO.puts "auth - success"
           {:ok, user}
         else
+          IO.puts "auth - failed"
           {:error, :invalid_data}
         end
     end
@@ -57,9 +48,9 @@ defmodule Top5Web.HomeController do
   defp validate_signin(params) do
     case ( Map.values(params) == ["",""] ) do 
       true ->
-        false
+        {:error, 'error'}
       false ->
-        true
+        {:ok, 'success'}
     end
   end
 

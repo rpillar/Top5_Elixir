@@ -6,8 +6,6 @@
                              phoenix_ecto]},
               {description,"top5"},
               {modules,['Elixir.Top5','Elixir.Top5.Accounts',
-                        'Elixir.Top5.Accounts.Guardian',
-                        'Elixir.Top5.Accounts.Guardian.Plug',
                         'Elixir.Top5.Accounts.User','Elixir.Top5.Application',
                         'Elixir.Top5.Repo','Elixir.Top5.Tasks',
                         'Elixir.Top5.Tasks.Note','Elixir.Top5.Tasks.Task',
