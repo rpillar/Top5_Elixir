@@ -1,5 +1,7 @@
 # Top5
 
+Deprecated in view of Top52 - see repo.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
